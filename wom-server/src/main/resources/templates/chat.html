@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<style type="text/css">
+    /*滚动条整体样式*/
+    html ::-webkit-scrollbar {
+        display: block;
+        width: 8px;
+        height: 8px;
+    }
+
+    /*滚动条里面小方块*/
+    html ::-webkit-scrollbar-thumb {
+        border-radius: 4px;
+        background: #c1c1c1;
+    }
+
+    html ::-webkit-scrollbar-thumb:hover {
+        background: #a8a8a8;
+    }
+
+    html ::-webkit-scrollbar-thumb:active {
+        background: #787878;
+    }
+
+    /*滚动条里面轨道*/
+    html ::-webkit-scrollbar-track {
+        background-color: #f1f1f1;
+    }
+</style>
+
+<body>
+    <div id="chatBox"></div>
+</body>
+
+<!-- <script src="https://cdn.bootcdn.net/ajax/libs/sockjs-client/1.6.1/sockjs.min.js"></script> -->
+<!-- <script src="https://cdn.bootcdn.net/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script> -->
+<script src="../static/sockjs.min.js"></script>
+<script src="../static/stomp.min.js"></script>
+
+<!-- <script src="https://cdn.bootcdn.net/ajax/libs/react/18.2.0/umd/react.production.min.js"></script> -->
+<!-- <script src="https://cdn.bootcdn.net/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script> -->
+<script src="../static/react.production.min.js"></script>
+<script src="../static/react-dom.production.min.js"></script>
+<!-- <script src="../static/react.development.js"></script> -->
+<!-- <script src="../static/react-dom.development.js"></script> -->
+
+<script type="module">
+    import { renderChatBox } from "../static/chat/chatBox.js";
+    renderChatBox(document.getElementById('chatBox'));
+</script>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>homepage</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+
+    <p th:text="${hello}"></p>
+
+    <h1><a href="/chat-client">聊天室</a></h1>
+    <img th:src="@{/chat-qr}" />
+
+</body>
+
+<script>
+    const download = fileName => {
+        // fetch('http://localhost:8081/piping/123')
+        //     .then(res => res.blob())
+        //     .then(blob => {
+        //         console.log('createObjectURL');
+        //         const url = URL.createObjectURL(blob);
+        //         console.log(url);
+        //         // const a = document.createElement('a');
+        //         // a.href = url;
+        //         // a.target = '_blank';
+        //         // a.style.display = 'none';
+        //         // a.download = fileName;
+        //         // document.body.appendChild(a);
+        //         // a.click();
+        //         window.open(url)
+        //         URL.revokeObjectURL(url);
+        //         // document.body.removeChild(a);
+        //     });
+
+        fetch('http://localhost:8081/piping/123')
+            .then(res => res.body.getReader())
+            .then(async reader => {
+                while (true) {
+                    const { done, value } = await reader.read();
+                    if (done) {
+                        break;
+                    }
+                    console.log(value);
+                    console.log(`Received ${value.length} bytes`)
+                }
+            })
+            // todo 通过serviceWork实现流式下载
+    }
+</script>
+
+</html>
