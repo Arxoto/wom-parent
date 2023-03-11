@@ -13,41 +13,51 @@
     <h1><a href="/chat-client">聊天室</a></h1>
     <img th:src="@{/chat-qr}" />
 
+    <button id="test">testdownload</button>
+
 </body>
 
 <script>
+    document.getElementById('test').onclick = () => download('test.log');
     const download = fileName => {
+        // 方案一 将流转为文件下载 缺点blob方法有oom风险 实际测试好像没有 没有下载速率等 体验不好
+        fetch('http://localhost:8081/piping/123')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('fetch error');
+                }
+                return response;
+            })
+            .then(res => res.blob())
+            .then(blob => {
+                const a = document.createElement('a');
+                const url = URL.createObjectURL(blob);
+                a.style.display = 'none';
+                a.target = '_blank';
+                a.download = fileName;
+                a.href = url;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            })
+            .catch(error => { alert(error.message); });
+
+        // 方案二 流式读取 缺点不适用于文件拼接
         // fetch('http://localhost:8081/piping/123')
-        //     .then(res => res.blob())
-        //     .then(blob => {
-        //         console.log('createObjectURL');
-        //         const url = URL.createObjectURL(blob);
-        //         console.log(url);
-        //         // const a = document.createElement('a');
-        //         // a.href = url;
-        //         // a.target = '_blank';
-        //         // a.style.display = 'none';
-        //         // a.download = fileName;
-        //         // document.body.appendChild(a);
-        //         // a.click();
-        //         window.open(url)
-        //         URL.revokeObjectURL(url);
-        //         // document.body.removeChild(a);
+        //     .then(res => res.body.getReader())
+        //     .then(async reader => {
+        //         while (true) {
+        //             const { done, value } = await reader.read();
+        //             if (done) {
+        //                 break;
+        //             }
+        //             console.log(value);
+        //             console.log(`Received ${value.length} bytes`)
+        //         }
         //     });
 
-        fetch('http://localhost:8081/piping/123')
-            .then(res => res.body.getReader())
-            .then(async reader => {
-                while (true) {
-                    const { done, value } = await reader.read();
-                    if (done) {
-                        break;
-                    }
-                    console.log(value);
-                    console.log(`Received ${value.length} bytes`)
-                }
-            })
-            // todo 通过serviceWork实现流式下载
+        // 方案三 通过serviceWork实现流式下载 缺点需要https或者localhost 安全限制
     }
 </script>
 

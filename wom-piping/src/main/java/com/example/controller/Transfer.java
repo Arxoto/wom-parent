@@ -1,6 +1,5 @@
 package com.example.controller;
 
-import com.example.common.CommonException;
 import com.example.service.Piping;
 import jakarta.servlet.ServletInputStream;
 import jakarta.servlet.ServletOutputStream;

@@ -1,7 +1,7 @@
 package com.example.controller;
 
-import com.example.common.RestErrorMessage;
 import com.example.common.CommonException;
+import com.example.common.RestErrorMessage;
 import com.example.util.RandomStringUtil;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;

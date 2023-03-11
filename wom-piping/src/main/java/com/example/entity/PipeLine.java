@@ -36,6 +36,9 @@ public class PipeLine {
                 outputStream.write(bytes, 0, len);
                 outputStream.flush();
             }
+
+            sourceOutput.write("done.\n".getBytes(StandardCharsets.UTF_8));
+            sourceOutput.flush();
         } catch (IOException e) {
             throw CommonException.of(e);
         }

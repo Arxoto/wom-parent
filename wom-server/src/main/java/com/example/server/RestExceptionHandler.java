@@ -1,7 +1,7 @@
 package com.example.server;
 
-import com.example.common.RestErrorMessage;
 import com.example.common.CommonException;
+import com.example.common.RestErrorMessage;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

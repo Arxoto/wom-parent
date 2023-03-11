@@ -11,6 +11,7 @@ const covertJson = response => response.json();
 const covertText = response => response.text();
 const parseJson = text => JSON.parse(text);
 
+// catch 加载前面会往下游传 null
 // 'http://localhost:8081' + 
 const rest = {
     get: url => fetch(url).then(checkError).catch(whenErr),
