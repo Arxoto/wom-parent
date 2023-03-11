@@ -1,0 +1,1 @@
+nohup java -jar /opt/wom-server/wom-server.jar > /var/log/wom/wom-server.log 2>&1 &
