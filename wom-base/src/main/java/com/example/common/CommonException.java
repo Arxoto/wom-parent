@@ -3,8 +3,8 @@ package com.example.common;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
+@Getter
 public class CommonException extends RuntimeException {
-    @Getter
     private final HttpStatus status;
 
     public CommonException(String message, HttpStatus status) {

@@ -1,16 +1,16 @@
 package com.example.common;
 
-import lombok.Builder;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class RestErrorMessage {
     private String errorMessage;
 
     public static RestErrorMessage of(CommonException e) {
-        return RestErrorMessage.builder()
-                .errorMessage(e.getMessage())
-                .build();
+        return new RestErrorMessage(e.getMessage());
     }
 }
