@@ -1,11 +1,11 @@
-package com.example.magic;
+package com.example.sql;
 
 import lombok.Builder;
 import lombok.Data;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class MagicalBuilderTest {
+class SqlBuilderTest {
 
     @Data
     @Builder
@@ -19,12 +19,12 @@ class MagicalBuilderTest {
 
     @Test
     public void testGetter() {
-        Assertions.assertEquals("name", ((BiGetter<People>) People::getName).propertyName());
+        Assertions.assertEquals("name", ((SerialFunc<People>) People::getName).propertyName());
     }
 
     @Test
     public void test0() {
-        String build = new MagicalBuilder<People>()
+        String build = new SqlBuilder<People>()
                 .select(People::getName)
                 .where(People::getId)
                 .build(People.builder().id(0).build());
@@ -34,7 +34,7 @@ class MagicalBuilderTest {
 
     @Test
     public void test1() {
-        String build = new MagicalBuilder<People>()
+        String build = new SqlBuilder<People>()
                 .where(People::getId)
                 .where(People::getName)
                 .build(People.builder().id(2).name("People").build());
@@ -44,7 +44,7 @@ class MagicalBuilderTest {
 
     @Test
     public void test2() {
-        String build = new MagicalBuilder<People>()
+        String build = new SqlBuilder<People>()
                 .select(People::getId)
                 .select(People::getName)
                 .build(People.builder().build());

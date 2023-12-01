@@ -1,4 +1,4 @@
-package com.example.magic;
+package com.example.sql;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

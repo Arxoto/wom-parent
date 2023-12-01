@@ -1,4 +1,4 @@
-package com.example.magic;
+package com.example.sql;
 
 import com.example.common.CommonException;
 
@@ -6,21 +6,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class MagicalBuilder<T> {
-    private final List<BiGetter<T>> select;
-    private final List<BiGetter<T>> where;
+public class SqlBuilder<T> {
+    private final List<SerialFunc<T>> select;
+    private final List<SerialFunc<T>> where;
 
-    public MagicalBuilder() {
+    public SqlBuilder() {
         select = new ArrayList<>();
         where = new ArrayList<>();
     }
 
-    public MagicalBuilder<T> select(BiGetter<T> getter) {
+    public SqlBuilder<T> select(SerialFunc<T> getter) {
         select.add(getter);
         return this;
     }
 
-    public MagicalBuilder<T> where(BiGetter<T> getter) {
+    public SqlBuilder<T> where(SerialFunc<T> getter) {
         where.add(getter);
         return this;
     }

@@ -1,4 +1,4 @@
-package com.example.magic;
+package com.example.sql;
 
 import com.example.common.CommonException;
 

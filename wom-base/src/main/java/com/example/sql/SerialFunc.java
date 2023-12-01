@@ -1,4 +1,4 @@
-package com.example.magic;
+package com.example.sql;
 
 import com.example.common.CommonException;
 
@@ -22,7 +22,7 @@ import java.lang.reflect.Method;
  * 满足需求：反射获取属性和值
  */
 @FunctionalInterface
-public interface BiGetter<T> extends Serializable {
+public interface SerialFunc<T> extends Serializable {
     Object apply(T t);
 
     default SerializedLambda serializedLambda() {
