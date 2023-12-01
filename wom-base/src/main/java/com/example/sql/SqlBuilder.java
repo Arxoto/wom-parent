@@ -6,6 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * 通过可序列化的lambda方法 获取方法名（转换成属性名）和实际值（class::getter方法实际上被转换成一个Function）
+ * @param <T> 实体类
+ */
 public class SqlBuilder<T> {
     private final List<SerialFunc<T>> select;
     private final List<SerialFunc<T>> where;
