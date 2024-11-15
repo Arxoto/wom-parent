@@ -1,8 +1,11 @@
 package com.example.creator;
 
 /**
- * 组合和委托实现复用
- * 或者名称后缀改为 Able ？暂没有好的想法。
+ * 使用组合而不是继承来实现代码复用
+ * <ol>
+ *     <li>完整功能复用：通过委托来实现，如下示例</li>
+ *     <li>重写父类方法：基于“函数是一等公民”将逻辑从编译时提升至运行时（可配合工厂模式）（人为强制区分不可重写的private和可以重写的public）</li>
+ * </ol>
  * <ul>
  *     <li>委托来自 Object-Oriented Design</li>
  *     <li>这里参考 Component-Oriented Design</li>
