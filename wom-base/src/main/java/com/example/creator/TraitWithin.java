@@ -18,11 +18,11 @@ package com.example.creator;
  * P.S.
  * 另有 DDD(Domain-Driven Design) 领域驱动设计 门槛较高不在这里讲述
  */
-public interface TraitAgent extends Trait {
-    Trait asTrait();
+public interface TraitWithin extends Trait {
+    Trait takeTrait();
 
     @Override
     default void doFunction() {
-        this.asTrait().doFunction();
+        this.takeTrait().doFunction();
     }
 }
